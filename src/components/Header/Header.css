@@ -1,0 +1,39 @@
+.header {
+  max-width: 1280px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 18px 70px;
+  background-color: #073042;
+  justify-content: space-between;
+}
+
+.header__logo {
+  background-image: url(../../images/logo.png);
+  min-width: 38px;
+  min-height: 38px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header__nav {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.header__link {
+  text-decoration: none;
+  color: #FFFFFF;
+  cursor: pointer;
+
+  font-family: Nunito;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+}
+
+.header__link:hover {
+  opacity: .6;
+}
