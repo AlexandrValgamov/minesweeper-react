@@ -27,7 +27,7 @@
   color: #FFFFFF;
   cursor: pointer;
 
-  font-family: Nunito;
+  font-family: Nunito, 'Helvetica Neue', Arial, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -36,4 +36,24 @@
 
 .header__link:hover {
   opacity: .6;
+}
+
+@media screen and (max-width: 900px) {
+  .header {
+    padding: 16px 50px;
+  }
+
+  .header__link {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .header {
+    padding: 10px 15px;
+  }
+
+  .header__link {
+    font-size: 16px;
+  }
 }
