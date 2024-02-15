@@ -4,7 +4,7 @@
   flex-direction: row;
   align-items: center;
   padding: 18px 70px;
-  background-color: #073042;
+  background-color: #7C76BB;
   justify-content: space-between;
 }
 
@@ -16,7 +16,10 @@
   background-repeat: no-repeat;
 }
 
-.header__nav {
+.header__links-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
   display: flex;
   flex-direction: row;
   gap: 20px;

@@ -2,13 +2,15 @@ import { Link } from "react-router-dom";
 import "./Header.css"
 
 export default function Header() {
-  return(
+  return (
     <header className="header">
       <div className="header__logo" />
-      <div className="header__nav">
-        <Link to="/options" className="header__link">Настройки</Link>
-        <Link to="/leaders" className="header__link">Таблица лидеров</Link>
-      </div>
+      <nav className="header__nav">
+        <ul className="header__links-list">
+          <li><Link to="/" className="header__link">Настройки</Link></li>
+          <li><Link to="/leaders" className="header__link">Таблица лидеров</Link></li>
+        </ul>
+      </nav>
     </header>
   )
 }

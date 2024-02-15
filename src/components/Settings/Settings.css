@@ -1,0 +1,29 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings__title {
+  color: #1072F6;
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  font-family: Nunito, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 120%;
+}
+
+.settings__options {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 350px;
+}
