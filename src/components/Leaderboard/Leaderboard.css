@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 50%;
+  width: 80%;
   border-bottom: 1px solid #7C76BB;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .leaderboard__table {
-  width: 50%;
+  width: 80%;
   border-collapse: collapse;
   padding-top: 20px;
 }
@@ -57,7 +57,8 @@
 }
 
 .leaderboard__table .leaderboard__row:nth-child(odd) {
-  background-color: #7C76BB80; /* Цвет фона для нечётных строк */
+  background-color: #7C76BB80;
+  /* Цвет фона для нечётных строк */
 }
 
 .leaderboard__cell {
@@ -79,4 +80,47 @@
   font-style: normal;
   font-weight: 800;
   text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  .leaderboard {
+    margin-top: 40px;
+  }
+
+  .leaderboard__button {
+    padding: 8px 15px;
+    font-size: 20px;
+  }
+
+  .leaderboard__header {
+    padding: 10 px 6px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .leaderboard {
+    margin-top: 30px;
+    padding: 18px 0;
+  }
+
+  .leaderboard__button {
+    padding: 4px 10px;
+    font-size: 14px;
+  }
+
+  .leaderboard__header {
+    font-size: 14px;
+  }
+
+  .leaderboard__cell {
+    padding: 6px;
+    font-size: 14px;
+  }
+}
+
+@media (hover: none) {
+  .leaderboard__button:hover {
+    opacity: 1;
+  }
 }

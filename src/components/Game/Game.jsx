@@ -1,11 +1,14 @@
 import "./Game.css"
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback, useContext } from "react"
+import { LeaderboardContext } from "../../contexts/LeaderboardContext";
 import PropTypes from "prop-types"
 import { generateBoard, getMinesPositions } from "../../utils/boardLogic"
 import Cell from "../Cell/Cell"
 
 export default function Game({ option }) {
-  const [board, setBoard] = useState(generateBoard(option.gridSize.row, option.gridSize.col));
+  const { col, row } = option.gridSize
+  const { leaders, setLeaders, name } = useContext(LeaderboardContext);
+  const [board, setBoard] = useState(generateBoard(row, col));
   const [mineCounter, setMineCounter] = useState(option.mineCount)
   const [gameStarted, setGameStarted] = useState(false)
   const [gameOver, setGameOver] = useState(false)
@@ -13,6 +16,35 @@ export default function Game({ option }) {
   const [openedCells, setOpenedCells] = useState(0)
   const [flaggedCells, setFlaggedCells] = useState(0)
   const totalCells = option.gridSize.row * option.gridSize.col
+  const [cellSize, setCellSize] = useState(24);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 620) {
+        setCellSize(18)
+      } else if (window.innerWidth >= 1200) {
+        setCellSize(26)
+      } else {
+        setCellSize(24)
+        if (row !== col) {
+          setBoard(prev => transpose(prev))
+          
+        }
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const transpose = (board) => {
+    return Array.from({ length: board[0].length }, (_, colIndex) =>
+      board.map(row => row[colIndex])
+    );
+  }
 
   useEffect(() => {
     let interval = null
@@ -29,9 +61,10 @@ export default function Game({ option }) {
   }, [gameStarted, gameOver])
 
   const handleWin = useCallback(() => {
-    setGameOver(true);
+    setGameOver(true)
     setMineCounter(0)
-    openWinBoard(board);
+    openWinBoard(board)
+    updateLeaderboard()
   }, [board]);
 
   useEffect(() => {
@@ -39,6 +72,19 @@ export default function Game({ option }) {
       handleWin();
     }
   }, [openedCells, flaggedCells, option.mineCount, totalCells, handleWin]);
+
+  const updateLeaderboard = () => {
+    const newLeader = {
+      name: name,
+      time: time
+    }
+    let updatedLeaders = [...leaders[option.level], newLeader];
+    updatedLeaders = updatedLeaders.sort((a, b) => a.time - b.time).slice(0, 10)
+    setLeaders(prevLeaders => ({
+      ...prevLeaders,
+      [option.level]: updatedLeaders
+    }))
+  }
 
   const handleLeftClick = (rowIndex, colIndex) => {
     if (gameOver || board[rowIndex][colIndex].isOpen) return
@@ -186,13 +232,15 @@ export default function Game({ option }) {
   }
 
   const gridStyle = {
-    gridTemplateColumns: `repeat(${option.gridSize.col}, 24px)`,
-    gridTemplateRows: `repeat(${option.gridSize.row}, 24px)`,
+    gridTemplateColumns: `repeat(${col}, ${cellSize}px)`,
+    gridTemplateRows: `repeat(${row}, ${cellSize}px)`,
   }
+
+  const gameInfoStyle = { width: `${col * cellSize}px` }
 
   return (
     <section className="game">
-      <div className="game__info">
+      <div className="game__info" style={gameInfoStyle}>
         <div className="game__counter">{`\u{1F4A3} ${mineCounter}`}</div>
         <button className="game__button" onClick={handleRestartClick} />
         <div className="game__timer">{time}</div>
@@ -221,6 +269,7 @@ Game.propTypes = {
       col: PropTypes.number,
     }),
     mineCount: PropTypes.number,
+    level: PropTypes.string,
   }).isRequired,
   onButtonClick: PropTypes.func,
 }

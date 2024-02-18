@@ -16,3 +16,17 @@
 .button:active {
   transform: translateY(2px);
 }
+
+.button_disabled {
+  opacity: .5;
+}
+
+.button_disabled:active {
+  transform: none;
+}
+
+@media screen and (max-width: 620px) {
+  .button {
+    font-size: 20px;
+  }
+}

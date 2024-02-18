@@ -45,3 +45,9 @@
 .cell__icon_count_6 { color: turquoise; }
 .cell__icon_count_7 { color: black; }
 .cell__icon_count_8 { color: white; }
+
+@media (hover: none) {
+  .cell:hover {
+    opacity: 1;
+  }
+}

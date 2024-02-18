@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   
-  margin: 0 auto;
+  margin: 70px auto 0;
   padding: 10px;
 }
 
@@ -13,7 +13,6 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
 }
 
 .game__counter {
@@ -65,4 +64,10 @@
   grid-template-columns: repeat(8, 24px);
   gap: 2px;
   border: 1px solid black;
+}
+
+@media screen and (max-width: 620px) {
+  .game__board{
+    gap: 1px;
+  }
 }
