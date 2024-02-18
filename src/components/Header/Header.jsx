@@ -8,7 +8,7 @@ export default function Header() {
       <nav className="header__nav">
         <ul className="header__links-list">
           <li><Link to="/" className="header__link">Настройки</Link></li>
-          <li><Link to="/leaders" className="header__link">Таблица лидеров</Link></li>
+          <li><Link to="/leaderboard" className="header__link">Таблица лидеров</Link></li>
         </ul>
       </nav>
     </header>

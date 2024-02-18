@@ -1,14 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Route, Routes, useNavigate } from "react-router-dom"
 import './App.css'
 import Header from "../Header/Header"
 import Settings from "../Settings/Settings"
 import Game from '../Game/Game'
-import { gameOptions } from "../../utils/constants"
+import Leaderboard from '../Leaderboard/Leaderboard'
+import { gameOptions, defaultLeaders } from "../../utils/constants"
+import { LeaderboardContext } from "../../contexts/LeaderboardContext";
 
 export default function App() {
   const [option, setOption] = useState(gameOptions[0])
+  const [leaders, setLeaders] = useState(() => {
+    const savedLeaders = localStorage.getItem('leaders');
+    return savedLeaders ? JSON.parse(savedLeaders) : defaultLeaders;
+  })
   const navigate = useNavigate()
+
+  useEffect(() => {
+    localStorage.setItem('leaders', JSON.stringify(leaders));
+  }, [leaders]);
 
   function onButtonClick(option) {
     setOption(option)
@@ -16,6 +26,7 @@ export default function App() {
   }
 
   return (
+    <LeaderboardContext.Provider value={{leaders, setLeaders}} >
     <div className="page">
       <Header />
       <Routes >
@@ -27,17 +38,14 @@ export default function App() {
           path="/game"
           element={<Game option={option} />}
         />
-        {/* <Route
-          path="/leaders"
-          element={<Leaders />}
-        />
         <Route
-          path="/"
-          element={<Main />}
-        /> */}
+          path="/leaderboard"
+          element={<Leaderboard />}
+        />
         {/* <Route path="*" element={ } /> */}
       </Routes>
       {/* <Footer /> */}
     </div>
+    </LeaderboardContext.Provider >
   )
 }

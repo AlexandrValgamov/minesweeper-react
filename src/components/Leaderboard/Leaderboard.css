@@ -1,0 +1,82 @@
+.leaderboard {
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 70px;
+  margin-top: 70px;
+}
+
+.leaderboard__difficulty-switch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 50%;
+  border-bottom: 1px solid #7C76BB;
+}
+
+.leaderboard__button {
+  background-color: transparent;
+  padding: 10px 20px;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+
+  font-family: Nunito, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  text-align: right;
+}
+
+.leaderboard__button:hover {
+  opacity: .5;
+}
+
+.leaderboard__button_active {
+  background-color: #7C76BB;
+  color: white;
+}
+
+.leaderboard__table {
+  width: 50%;
+  border-collapse: collapse;
+  padding-top: 20px;
+}
+
+.leaderboard__header {
+  color: black;
+  padding: 10px;
+  background-color: #7C76BB;
+
+  font-family: Nunito, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  text-align: center;
+}
+
+.leaderboard__table .leaderboard__row:nth-child(odd) {
+  background-color: #7C76BB80; /* Цвет фона для нечётных строк */
+}
+
+.leaderboard__cell {
+  padding: 10px;
+
+  font-family: Nunito, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+}
+
+.leaderboard__cell_type_error {
+  height: 50vh;
+  width: 100%;
+  color: #1072F6;
+  font-family: Nunito, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 800;
+  text-align: center;
+}
