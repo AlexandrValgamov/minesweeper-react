@@ -1,0 +1,47 @@
+.cell {
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+
+.cell:active {
+  transform: translateY(2px);
+}
+
+.cell:hover {
+  opacity: .5;
+}
+
+.cell_open {
+  background-color: darkgoldenrod;
+}
+
+.cell_color_red {
+  background-color: red;
+}
+
+.cell_disabled:hover {
+  opacity: inherit;
+}
+
+.cell_disabled:active {
+  transform: none;
+}
+
+.cell__icon {
+  user-select: none;
+  color: white;
+  font-family: Nunito, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 800;
+}
+
+.cell__icon_count_1 { color: blue; }
+.cell__icon_count_2 { color: green; }
+.cell__icon_count_3 { color: red; }
+.cell__icon_count_4 { color: darkblue; }
+.cell__icon_count_5 { color: brown; }
+.cell__icon_count_6 { color: turquoise; }
+.cell__icon_count_7 { color: black; }
+.cell__icon_count_8 { color: white; }

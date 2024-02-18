@@ -3,7 +3,7 @@ import { Route, Routes, useNavigate } from "react-router-dom"
 import './App.css'
 import Header from "../Header/Header"
 import Settings from "../Settings/Settings"
-import Board from '../Board/Board'
+import Game from '../Game/Game'
 import { gameOptions } from "../../utils/constants"
 
 export default function App() {
@@ -25,7 +25,7 @@ export default function App() {
         />
         <Route
           path="/game"
-          element={<Board option={option} />}
+          element={<Game option={option} />}
         />
         {/* <Route
           path="/leaders"
